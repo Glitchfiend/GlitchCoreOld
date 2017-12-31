@@ -22,7 +22,7 @@ public class EntityHelper
 
     public static void registerEgg(ResourceLocation location, int primary, int secondary)
     {
-        Class<? extends Entity> entityClass = EntityList.NAME_TO_CLASS.get(location.getResourcePath());
+        Class<? extends Entity> entityClass = EntityList.NAME_TO_CLASS.get(location.getResourceDomain() + "." + location.getResourcePath());
         EntityRegistry.registerEgg(entityClass, primary, secondary);
     }
 }

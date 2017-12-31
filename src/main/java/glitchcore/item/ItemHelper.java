@@ -11,9 +11,17 @@ import glitchcore.util.GFNonNullList;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class ItemHelper
 {
+    public static void registerItem(ResourceLocation location, Item item)
+    {
+        item.setRegistryName(location);
+        ForgeRegistries.ITEMS.register(item);
+    }
+
     public static GFNonNullList<ItemStack> getSubItems(CreativeTabs tab, Item item)
     {
         GFNonNullList<ItemStack> list = GFNonNullList.create();

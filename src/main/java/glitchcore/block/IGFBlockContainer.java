@@ -29,22 +29,4 @@ public abstract class IGFBlockContainer extends BlockContainer implements IGFBlo
         super(material);
     }
     protected IGFBlockContainer(Material material, MapColor color) { super(material, color); }
-
-    @Override
-    public AxisAlignedBB getCollisionBoundingBox(IBlockState state, World world, BlockPos pos)
-    {
-        return this.getCollisionBoundingBox(state, world, pos);
-    }
-
-    @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
-    {
-        return this.onBlockActivated(world, pos, state, player, hand, side, hitX, hitY, hitZ);
-    }
-
-    @Override
-    public void neighborChanged(IBlockState state, World world, BlockPos pos, Block block)
-    {
-        this.neighborChanged(state, world, pos, block, null);
-    }
 }

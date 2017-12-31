@@ -23,33 +23,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public interface IGFItem
 {
-    // Introduced in 1.12
-    default boolean isInCreativeTab(CreativeTabs tab)
-    {
-        for (CreativeTabs tabEntry : ((Item)this).getCreativeTabs())
-        {
-            if (tab == tabEntry) return true;
-        }
-
-        return false;
-    }
-
-    // Introduced in 1.12
-    default ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand)
-    {
-        return new ActionResult(EnumActionResult.PASS, player.getHeldItem(hand));
-    }
-
-    // Introduced in 1.12
     @SideOnly(Side.CLIENT)
     default void getSubItems(CreativeTabs tab, GFNonNullList<ItemStack> subItems)
     {
         subItems.add(new ItemStack((Item)this));
-    }
-
-    // Introduced in 1.12
-    default EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ)
-    {
-        return EnumActionResult.PASS;
     }
 }

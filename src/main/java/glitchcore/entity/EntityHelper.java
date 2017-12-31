@@ -16,13 +16,12 @@ public class EntityHelper
 {
     public static void registerEntity(ResourceLocation location, Class<? extends Entity> entityClass, String entityName, int id, Object mod, int trackingRange, int updateFrequency, boolean sendsVelocityUpdates)
     {
-        EntityRegistry.registerModEntity(entityClass, entityName, id, mod, trackingRange, updateFrequency, sendsVelocityUpdates);
+        EntityRegistry.registerModEntity(location, entityClass, entityName, id, mod, trackingRange, updateFrequency, sendsVelocityUpdates);
     }
 
 
     public static void registerEgg(ResourceLocation location, int primary, int secondary)
     {
-        Class<? extends Entity> entityClass = EntityList.NAME_TO_CLASS.get(location.getResourcePath());
-        EntityRegistry.registerEgg(entityClass, primary, secondary);
+        EntityRegistry.registerEgg(location, primary, secondary);
     }
 }

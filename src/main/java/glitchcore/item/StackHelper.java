@@ -13,21 +13,21 @@ public class StackHelper
 {
     public static boolean isEmpty(ItemStack stack)
     {
-        return stack == null || stack.stackSize == 0 | stack.getItem() == null;
+        return stack.isEmpty();
     }
 
     public static void setSize(ItemStack stack, int size)
     {
-        stack.stackSize = size;
+        stack.setCount(size);
     }
 
     public static void increment(ItemStack stack, int amount)
     {
-        stack.stackSize += amount;
+        stack.grow(amount);
     }
 
     public static void decrement(ItemStack stack, int amount)
     {
-        stack.stackSize -= amount;
+        stack.shrink(amount);
     }
 }

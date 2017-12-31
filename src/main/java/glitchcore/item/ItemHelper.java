@@ -17,7 +17,7 @@ public class ItemHelper
     public static GFNonNullList<ItemStack> getSubItems(CreativeTabs tab, Item item)
     {
         GFNonNullList<ItemStack> list = GFNonNullList.create();
-        item.getSubItems(item, tab, list);
+        item.getSubItems(tab, list);
         return list;
     }
 }

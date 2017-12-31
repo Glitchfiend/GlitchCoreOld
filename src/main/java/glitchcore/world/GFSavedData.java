@@ -7,7 +7,7 @@
  ******************************************************************************/
 package glitchcore.world;
 
-import net.minecraft.world.WorldSavedData;
+import net.minecraft.world.storage.WorldSavedData;
 
 public abstract class GFSavedData extends WorldSavedData
 {

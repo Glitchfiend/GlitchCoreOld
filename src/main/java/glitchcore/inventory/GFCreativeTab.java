@@ -11,6 +11,7 @@ import glitchcore.util.GFNonNullList;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -26,7 +27,7 @@ public abstract class GFCreativeTab extends CreativeTabs
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void displayAllRelevantItems(List<ItemStack> list)
+    public void displayAllRelevantItems(NonNullList<ItemStack> list)
     {
         GFNonNullList<ItemStack> itemList = GFNonNullList.create();
         itemList.addAll(list);
@@ -34,10 +35,9 @@ public abstract class GFCreativeTab extends CreativeTabs
     }
 
     @Override
-    @SideOnly(Side.CLIENT)
-    public Item getTabIconItem()
+    public ItemStack getTabIconItem()
     {
-        return this.getIconItemStack().getItem();
+        return this.getTabIconItem();
     }
 
     // Introduced in 1.12
@@ -46,23 +46,7 @@ public abstract class GFCreativeTab extends CreativeTabs
     {
         for (Item item : Item.REGISTRY)
         {
-            if (item == null)
-            {
-                continue;
-            }
-
-            for (CreativeTabs tab : item.getCreativeTabs())
-            {
-                if (tab == this)
-                {
-                    item.getSubItems(item, this, itemList);
-                }
-            }
-        }
-
-        if (this.getRelevantEnchantmentTypes() != null)
-        {
-            this.addEnchantmentBooksToList(itemList, this.getRelevantEnchantmentTypes());
+            item.getSubItems(this, itemList);
         }
     }
 }

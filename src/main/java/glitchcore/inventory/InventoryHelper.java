@@ -20,13 +20,13 @@ public class InventoryHelper
         switch (type)
         {
             case INVENTORY:
-                return inventory.mainInventory[index];
+                return inventory.mainInventory.get(index);
 
             case ARMOR:
-                return inventory.armorInventory[index];
+                return inventory.armorInventory.get(index);
 
             case OFF_HAND:
-                return inventory.offHandInventory[index];
+                return inventory.offHandInventory.get(index);
         }
 
         return null;

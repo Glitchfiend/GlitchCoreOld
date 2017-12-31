@@ -7,6 +7,7 @@
  ******************************************************************************/
 package glitchcore.util;
 
+import net.minecraft.util.NonNullList;
 import org.apache.commons.lang3.Validate;
 
 import javax.annotation.Nonnull;
@@ -16,11 +17,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class GFNonNullList<T> extends AbstractList<T>
+public class GFNonNullList<T> extends NonNullList<T>
 {
-    private final List<T> delegate;
-    private final T defaultElement;
-
     public static <T> GFNonNullList<T> create()
     {
         return new GFNonNullList<T>();
@@ -46,50 +44,6 @@ public class GFNonNullList<T> extends AbstractList<T>
 
     protected GFNonNullList(List<T> delegateIn, @Nullable T listType)
     {
-        this.delegate = delegateIn;
-        this.defaultElement = listType;
-    }
-
-    @Nonnull
-    public T get(int index)
-    {
-        return this.delegate.get(index);
-    }
-
-    public T set(int index, T element)
-    {
-        Validate.notNull(element);
-        return this.delegate.set(index, element);
-    }
-
-    public void add(int index, T element)
-    {
-        Validate.notNull(element);
-        this.delegate.add(index, element);
-    }
-
-    public T remove(int index)
-    {
-        return this.delegate.remove(index);
-    }
-
-    public int size()
-    {
-        return this.delegate.size();
-    }
-
-    public void clear()
-    {
-        if (this.defaultElement == null)
-        {
-            super.clear();
-        }
-        else
-        {
-            for (int i = 0; i < this.size(); ++i)
-            {
-                this.set(i, this.defaultElement);
-            }
-        }
+        super(delegateIn, listType);
     }
 }

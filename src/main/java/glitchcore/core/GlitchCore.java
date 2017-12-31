@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = GlitchCore.MOD_ID, version = GlitchCore.MOD_VERSION, name = GlitchCore.MOD_NAME, dependencies = "required-after:forge@[1.0.0.0,)")
+@Mod(modid = GlitchCore.MOD_ID, version = GlitchCore.MOD_VERSION, name = GlitchCore.MOD_NAME, dependencies = "required-after:Forge@[1.0.0.0,)")
 public class GlitchCore
 {
     public static final String MOD_NAME = "Glitch Core";

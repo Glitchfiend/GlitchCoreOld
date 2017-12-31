@@ -31,6 +31,8 @@ configFile.withReader {
 group = "com.github.glitchfiend.glitchcore"
 version = config.mod_version
 archivesBaseName = "GlitchCore"
+sourceCompatibility=1.8
+targetCompatibility=1.8
 
 //Add "embedded" configuration
 configurations {

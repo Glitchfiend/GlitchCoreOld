@@ -1,0 +1,59 @@
+buildscript {
+    repositories {
+        jcenter()
+		mavenLocal()
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+    }
+	dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'maven'
+
+ext {
+    packaging = 'jar'
+	configFile = file "build.properties"
+}
+
+configFile.withReader {
+    def prop = new Properties()
+    prop.load(it)
+    project.ext.config = new ConfigSlurper().parse prop
+}
+
+
+group = "com.github.glitchfiend.glitchcore"
+version = config.mod_version
+archivesBaseName = "GlitchCore"
+
+//Add "embedded" configuration
+configurations {
+    embed
+    compile.extendsFrom(embed)
+}
+
+minecraft {
+    version = config.minecraft_version + "-" + config.forge_version
+	mappings = project.config.mappings_version
+    runDir = "run"
+}
+
+jar {
+	//Add dependencies to the JAR
+	from configurations.embed.collect { it.isDirectory() ? it : zipTree(it) }
+
+	/*manifest {
+		attributes (
+			"FMLCorePlugin": 'toughasnails.asm.TANLoadingPlugin',
+			"FMLCorePluginContainsFMLMod": 'true',
+			"ForceLoadAsMod": 'true',
+			"FMLAT": 'toughasnails_at.cfg'
+		)
+	}*/
+}

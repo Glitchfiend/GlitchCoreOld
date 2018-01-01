@@ -7,15 +7,22 @@
  ******************************************************************************/
 package glitchcore.potion;
 
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class PotionHelper
 {
-    public static void registerPotion(ResourceLocation location, PotionType potion)
+    public static void registerPotion(ResourceLocation location, Potion potion)
     {
         potion.setRegistryName(location);
-        ForgeRegistries.POTION_TYPES.register(potion);
+        ForgeRegistries.POTIONS.register(potion);
+    }
+
+    public static void registerPotionType(ResourceLocation location, PotionType potionType)
+    {
+        potionType.setRegistryName(location);
+        ForgeRegistries.POTION_TYPES.register(potionType);
     }
 }

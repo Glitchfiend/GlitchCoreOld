@@ -10,6 +10,7 @@ package glitchcore.item;
 import glitchcore.util.GFNonNullList;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
@@ -20,6 +21,11 @@ public class ItemHelper
     {
         item.setRegistryName(location);
         ForgeRegistries.ITEMS.register(item);
+    }
+
+    public static void setRepairMaterial(ItemArmor.ArmorMaterial material, ItemStack stack)
+    {
+        material.repairMaterial = stack;
     }
 
     public static GFNonNullList<ItemStack> getSubItems(CreativeTabs tab, Item item)

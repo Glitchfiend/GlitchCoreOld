@@ -24,6 +24,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public interface IGFItem
 {
     // Introduced in 1.12
+    default boolean func_194125_a(CreativeTabs tab) { return this.isInCreativeTab(tab); }
+
     default boolean isInCreativeTab(CreativeTabs tab)
     {
         for (CreativeTabs tabEntry : ((Item)this).getCreativeTabs())

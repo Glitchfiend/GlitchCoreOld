@@ -19,10 +19,14 @@ public class EntityHelper
         EntityRegistry.registerModEntity(entityClass, entityName, id, mod, trackingRange, updateFrequency, sendsVelocityUpdates);
     }
 
-
     public static void registerEgg(ResourceLocation location, int primary, int secondary)
     {
         Class<? extends Entity> entityClass = EntityList.NAME_TO_CLASS.get(location.getResourceDomain() + "." + location.getResourcePath());
         EntityRegistry.registerEgg(entityClass, primary, secondary);
+    }
+
+    public static String getEntityEggOwner(EntityList.EntityEggInfo info)
+    {
+        return info.spawnedID.substring(0, info.spawnedID.indexOf(".") - 1);
     }
 }

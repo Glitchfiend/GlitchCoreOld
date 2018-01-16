@@ -47,15 +47,25 @@ minecraft {
 }
 
 jar {
-	//Add dependencies to the JAR
-	from configurations.embed.collect { it.isDirectory() ? it : zipTree(it) }
+    classifier = 'universal'
+}
 
-	/*manifest {
-		attributes (
-			"FMLCorePlugin": 'toughasnails.asm.TANLoadingPlugin',
-			"FMLCorePluginContainsFMLMod": 'true',
-			"ForceLoadAsMod": 'true',
-			"FMLAT": 'toughasnails_at.cfg'
-		)
-	}*/
+processResources {
+    from(sourceSets.main.resources.srcDirs) {
+        include '**/*.info'
+        include '**/*.properties'
+
+        // replaces
+        expand ([
+            'modid': project.archivesBaseName,
+            'mod_version': project.config.mod_version,
+            'minecraft_version': project.config.minecraft_version,
+            'build_number': project.config.build_number
+        ])
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        exclude '**/*.info'
+        exclude '**/*.properties'
+    }
 }

@@ -17,6 +17,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -29,7 +30,7 @@ public abstract class GFBlock extends Block implements IGFBlock
     @Override
     public AxisAlignedBB getCollisionBoundingBox(IBlockState state, World world, BlockPos pos)
     {
-        return this.getCollisionBoundingBox(state, world, pos);
+        return ((IGFBlock)this).getCollisionBoundingBox(state, world, pos);
     }
 
     @Override

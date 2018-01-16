@@ -33,7 +33,7 @@ public abstract class IGFBlockContainer extends BlockContainer implements IGFBlo
     @Override
     public AxisAlignedBB getCollisionBoundingBox(IBlockState state, World world, BlockPos pos)
     {
-        return this.getCollisionBoundingBox(state, world, pos);
+        return ((IGFBlock)this).getCollisionBoundingBox(state, world, pos);
     }
 
     @Override

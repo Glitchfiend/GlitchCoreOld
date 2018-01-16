@@ -21,6 +21,8 @@ public class StackHelper
         stack.stackSize = size;
     }
 
+    public static int getSize(ItemStack stack) { return stack.stackSize; }
+
     public static void increment(ItemStack stack, int amount)
     {
         stack.stackSize += amount;

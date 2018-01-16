@@ -29,8 +29,8 @@ public abstract class GFCreativeTab extends CreativeTabs
     public void displayAllRelevantItems(List<ItemStack> list)
     {
         GFNonNullList<ItemStack> itemList = GFNonNullList.create();
-        itemList.addAll(list);
         this.displayAllRelevantItems(itemList);
+        list.addAll(itemList);
     }
 
     @Override

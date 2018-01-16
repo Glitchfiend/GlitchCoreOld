@@ -52,6 +52,6 @@ public interface IGFItem
     // Introduced in 1.12
     default EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ)
     {
-        return EnumActionResult.PASS;
+        return ((Item)this).onItemUse(player.getHeldItem(hand), player, world, pos, hand, side, hitX, hitY, hitZ);
     }
 }

@@ -47,9 +47,19 @@ public class GFItemBlock extends ItemBlock implements IGFItem
         subItems.addAll(nonNullList);
     }
 
+    private static boolean onItemUseCalled = false;
+
     @Override
     public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
-        return this.onItemUse(player, world, pos, hand, facing, hitX, hitY, hitZ);
+        if (!onItemUseCalled)
+        {
+            onItemUseCalled = true;
+            EnumActionResult ret = this.onItemUse(player, world, pos, hand, facing, hitX, hitY, hitZ);
+            onItemUseCalled = false;
+            return ret;
+        }
+
+        return super.onItemUse(stack, player, world, pos, hand, facing, hitX, hitY, hitZ);
     }
 }

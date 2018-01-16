@@ -1,0 +1,9 @@
+[{
+    "modid": "glitchcore",
+    "name": "Glitch Core",
+    "description": "Utilities used by our mods to abstract Minecraft versions and reduce redundancy",
+    "version": "${mod_version}",
+    "mcversion": "${minecraft_version}",
+    "authorList": ["Adubbz", "Forstride" ],
+    "logoFile": "assets/glitchcore/textures/gui/logo.png"
+}]
